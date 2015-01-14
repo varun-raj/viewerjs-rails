@@ -20,3 +20,4 @@
 //= require viewerjs/ui_utils
 //= require viewerjs/text_layer_builder
 //= require viewerjs/pdfjsversion
+//= require viewerjs/webodf

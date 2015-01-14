@@ -4,13 +4,13 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'viewerjs/rails/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "viewerjs-rails"
+  spec.name          = "modern-viewerjs-rails"
   spec.version       = Viewerjs::Rails::VERSION
-  spec.authors       = ["Praveen Kumar Sinha"]
-  spec.email         = ["praveen.kumar.sinha@gmail.com"]
+  spec.authors       = ["Varun Raj"]
+  spec.email         = ["varunraj.026@gmail.com"]
   spec.summary       = "Viewerjs for Rails asset"
   spec.description   = "Viewerjs's images, stylesheets and javascript files packed here to be used with Rails"
-  spec.homepage      = "https://github.com/praveenkumarsinha/viewerjs-rails"
+  spec.homepage      = "https://github.com/varun-raj/viewerjs-rails"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

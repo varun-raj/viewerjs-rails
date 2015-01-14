@@ -39,8 +39,53 @@
 /*global document, window, Viewer, ODFViewerPlugin, PDFViewerPlugin*/
 
 var viewer;
+
+function loadPlugin(pluginName, callback) {
+    "use strict";
+    var script, style;
+
+    // Load script
+    script = document.createElement('script');
+    script.async = false;
+    script.onload = callback;
+    script.src = pluginName + '.js';
+    script.type = 'text/javascript';
+    document.getElementsByTagName('head')[0].appendChild(script);
+}
+
 function loadDocument(documentUrl) {
-    window.onload = function () {
-        viewer = new Viewer(new PDFViewerPlugin());
-    };
+    "use strict";
+
+    if (documentUrl) {
+        var extension = documentUrl.split('.').pop(),
+            Plugin;
+        extension = extension.toLowerCase();
+
+        switch (extension) {
+        case 'odt':
+        case 'fodt':
+        case 'ott':
+        case 'odp':
+        case 'fodp':
+        case 'otp':
+        case 'ods':
+        case 'fods':
+        case 'ots':
+            loadPlugin('./ODFViewerPlugin', function () {
+                Plugin = ODFViewerPlugin;
+            });
+            break;
+        case 'pdf':
+            loadPlugin('./PDFViewerPlugin', function () {
+                Plugin = PDFViewerPlugin;
+            });
+            break;
+        }
+
+        window.onload = function () {
+            if (Plugin) {
+                viewer = new Viewer(new Plugin());
+            }
+        };
+    }
 }
